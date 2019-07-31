@@ -1,0 +1,53 @@
+[System]
+Name='fuzzy_logic_drone'
+Type='mamdani'
+Version=2.0
+NumInputs=2
+NumOutputs=1
+NumRules=12
+AndMethod='min'
+OrMethod='max'
+ImpMethod='min'
+AggMethod='max'
+DefuzzMethod='centroid'
+
+[Input1]
+Name='height'
+Range=[0 100]
+NumMFs=4
+MF1='safe':'gaussmf',[10.28 0.5919]
+MF2='below-average':'gaussmf',[5.308 37.5]
+MF3='above-average':'gaussmf',[5.308 62.5]
+MF4='dangerous':'gaussmf',[10.62 100]
+
+[Input2]
+Name='change-rate'
+Range=[0 100]
+NumMFs=4
+MF1='min':'gaussmf',[10.57 0.05]
+MF2='normal':'gaussmf',[5.308 37.5]
+MF3='big':'gaussmf',[5.308 62.5]
+MF4='extreme':'gaussmf',[10.62 100]
+
+[Output1]
+Name='power'
+Range=[0 1]
+NumMFs=4
+MF1='lowest':'trimf',[-0.2501 0 0.2501]
+MF2='low':'trimf',[0.25 0.375 0.5]
+MF3='high':'trimf',[0.5 0.625 0.75]
+MF4='highest':'trimf',[0.7499 1 1.25]
+
+[Rules]
+1 1, 1 (1) : 1
+4 4, 4 (1) : 1
+3 0, 3 (1) : 2
+3 2, 2 (1) : 1
+2 3, 2 (1) : 1
+1 1, 1 (1) : 2
+2 2, 2 (1) : 1
+3 3, 3 (1) : 1
+0 3, 3 (1) : 1
+4 3, 4 (1) : 2
+3 4, 4 (1) : 2
+4 4, 4 (1) : 2
