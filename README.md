@@ -1,4 +1,4 @@
-# My class projects on "Computational Intelligence" in Democritus University of Thrace
+# My class projects on "Computational Intelligence" at Democritus University of Thrace
 Professor: Yiannis S. Boutalis
 
 keywords: genetic algorithms, neural network, fuzzy logic, traveling salesman, Sudoku, altitude hold
